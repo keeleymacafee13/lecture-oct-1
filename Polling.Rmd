@@ -14,9 +14,10 @@ x <- read_csv("polls_IT-parliament_2018-10-01.csv")
 
 ```{r, echo = FALSE}
 x %>%
-  select(date, firm, n, LN, M5S) %>%
-  gather(key = "party", value = "poll", LN, M5S) %>%
-  ggplot(aes(x = date, y = poll, color = party)) + geom_point()
+  select(date, firm, n, LN, M5S, PD, FIPDLFI) %>%
+  filter(date >= "2017-09-26") %>%
+  gather(key = "party", value = "poll", LN: FIPDLFI) %>%
+  ggplot(aes(x = date, y = poll, color = party)) + geom_smooth() + geom_point(size = 0.5, alpha = .1)
 ```
 
 ```{r first_plot}
