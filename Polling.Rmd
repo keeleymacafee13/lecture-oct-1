@@ -1,0 +1,23 @@
+---
+title: "Italian Polls"
+author: "Keeley MacAfee"
+date: "10/1/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+```
+
+
+```{r, echo = FALSE}
+raw <- read_csv("polls_IT-parliament_2018-10-01.csv")
+```
+
+```{r first_plot}
+raw %>%
+  ggplot(aes(x = date, y = LN, color = "red")) + geom_point() + geom_point(aes(x = date, y = M5S, color = "blue"))
+```
+
+
